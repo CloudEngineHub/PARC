@@ -30,21 +30,6 @@ parc_5_create_dataset.py
 ```
 This file also computes sampling weights, which is useful when there is much more motion data for certain types of clips than others (e.g. lots of running motions, few climbing motions).
 
-## Train Generator
-Run parc_1_train_gen.py
-
-## Generate Motions
-Run parc_2_kin_gen.py
-
-## Train Tracker
-Run parc_3_tracker.py
-
-## Record Motions
-Run parc_4_phys_record.py
-
-After recording motions, they need to be organized and hf_extra_vals must be computed:
-run zmotion_editing_tools/organize_recorded_dm_motions.py, then zmotion_editing_tools/process_motions.py:compute_hf_extra_vals.
-
 ## MOTION_FORGE
 The mouse cursor controls target direction and editing of terrain.
 
@@ -70,6 +55,7 @@ Edit the terrain using the "A" key, and check out what you can do with the Terra
 ## Dataset and Models
 Download the datasets from the initial iteration and each stage of PARC, as well as the models trained in the 3rd PARC iteration.
 https://1sfu-my.sharepoint.com/:f:/g/personal/mxa23_sfu_ca/Et16uLMFxoRKouibvBa7LbwBEmX5_iI5a8dZyiMc0wmSTA?e=ihma1b
+The password is "PARC".
 
 ## TODO
 - train and release more iterations of PARC generator and tracker
