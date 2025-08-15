@@ -39,7 +39,6 @@ try:
         input_config = yaml.safe_load(config_stream)
         g_motion_filepath = input_config["motion_filepath"]
         g_input_folder_dir = input_config["input_folder_dir"]
-        PRELOAD_MM_MOTIONS = input_config["load_motion_matcher"]
         LOAD_MDM = input_config["load_mdm"]
         LOAD_SAMPLER = input_config["load_sampler"]
 
