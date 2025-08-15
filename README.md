@@ -4,11 +4,20 @@ Project pages: https://michaelx.io/PARC
 
 # Getting Started
 Tested with Ubuntu 22.04
+
 Install IsaacGym: https://developer.nvidia.com/isaac-gym
+
+Make sure to install it within a conda environment with python 3.8.19 (Other versions may also work, but not tested).
+
 Install requirements:
+```
+conda activate parc
 pip install -r requirements.txt
+```
 and it should be good to go. If pytorch is not being able to detect CUDA, try reinstalling:
+```
 pip install torch==1.13.1+cu117 -f https://download.pytorch.org/whl/torch_stable.html
+```
 
 ## Codebase Guide
 The PARC training loop consists of 4 main stages, which are individually run by:
@@ -28,7 +37,7 @@ To create a dataset file, we provide the script:
 ```
 parc_5_create_dataset.py
 ```
-This file also computes sampling weights, which is useful when there is much more motion data for certain types of clips than others (e.g. lots of running motions, few climbing motions).
+This file also computes sampling weights, which is useful when there is much more motion data for certain types of clips than others (e.g. lots of running motions, few climbing motions). It also pre-computes some terrain data that will help with augmentation when training the motion diffusion model.
 
 ## MOTION_FORGE
 The mouse cursor controls target direction and editing of terrain.
