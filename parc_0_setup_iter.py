@@ -4,41 +4,37 @@ import datetime
 from pathlib import Path
 # this script is used to set up the configs for the PARC iteration
 
-output_dir = Path("../tests/parc/april272025/iter_3/")
+output_dir = Path("../tests/parc/experiment/iter_1/")
 
 ##### INPUT PATHS #####
-input_mdm_config_path = Path("../tests/parc/april272025/iter_2/p1_train_gen/mdm_cfg2025-06-09.yaml")
-input_model_path = Path("../tests/parc/april272025/iter_2/p1_train_gen/checkpoints/model_10000.pkl")
+input_mdm_config_path = Path("PARC/train_gen_default.yaml")
+input_model_path = None # put path to model here after iteration 1
 
 input_kin_gen_config_path = Path("PARC/kin_gen_default.yaml")
 
 input_tracker_config_path = Path("PARC/tracker_default.yaml")
-input_sampler_stats_path = Path("../tests/parc/april272025/iter_1/p1_train_gen/sampler_stats.txt")
+input_sampler_stats_path = None # put path to sampler stats file here (used for normalizing samples) after iter 1
 
 input_phys_record_config_path = Path("PARC/phys_record_default.yaml")
 
 ### GENERATION CONFIG ###
 kin_gen_num_batches_of_motions = 10 # number of parallel jobs to run
 kin_gen_num_motions_per_batch = 50
-kin_gen_motion_id_offset = 2000 # numbering starts from this number
-kin_gen_save_name = "teaser"
+kin_gen_motion_id_offset = 0 # numbering starts from this number
+kin_gen_save_name = "boxes"
 
 ### TRACKER CONFIG ###
-input_tracker_model_path = Path("../tests/parc/april272025/iter_2/p3_tracker/model.pt")
+input_tracker_model_path = None # put path to tracker here after iteration 1
 
 ### CREATE DATASET CONFIG ###
 input_create_dataset_config_path = Path("PARC/create_dataset_config.yaml")
-iter_start_dataset_path = Path("../tests/parc/april272025/iter_2/iter_2_end_motions.yaml")
-iter_end_dataset_path = Path("../tests/parc/april272025/iter_3/iter_3_end_motions.yaml")
-input_dataset_folder_paths = ["../tests/parc/april272025/iter_2/p4_phys_record/recorded_motions/",
-                              "../tests/parc/april272025/iter_1/p4_phys_record/recorded_motions/",
-                              "../Data/parkour_dataset_april/initial/"]
+iter_start_dataset_path = Path("../tests/parc/april272025/iter_1/iter_1_start_motions.yaml")
+input_dataset_folder_paths = ["../Data/initial/"] # replace with path to your initial dataset, could be the downloaded dataset "parc_dataset_august_12/initial_aug/" if you want to reproduce results
 
 
-write_start_dataset = False
-write_train_gen = False
-write_kin_gen = False
-write_tracker = False
+write_train_gen = True
+write_kin_gen = True
+write_tracker = True
 write_phys_record = True
 
 
@@ -73,7 +69,11 @@ dataset_config = yaml.safe_load(input_create_dataset_config_path.read_text())
 print("********** CREATING PARC 1 TRAIN GEN CONFIGS **********")
 mdm_config = yaml.safe_load(input_mdm_config_path.open("r"))
 mdm_config["motion_lib_file"] = str(iter_start_dataset_path)
-mdm_config["input_model_path"] = str(input_model_path)
+if input_model_path is not None:
+    mdm_config["input_model_path"] = str(input_model_path)
+else:
+    if "input_model_path" in mdm_config:
+        del mdm_config["input_model_path"]
 mdm_config["output_dir"] = str(output_train_gen_dir)
 mdm_config["sampler_save_filepath"] = str(output_train_gen_dir / "sampler.pkl")
 mdm_config["sampler_stats_filepath"] = str(output_train_gen_dir / "sampler_stats.txt") if input_sampler_stats_path is None else str(input_sampler_stats_path)

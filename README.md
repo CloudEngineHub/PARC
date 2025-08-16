@@ -19,6 +19,13 @@ and it should be good to go. If pytorch is not being able to detect CUDA, try re
 pip install torch==1.13.1+cu117 -f https://download.pytorch.org/whl/torch_stable.html
 ```
 
+## Dataset and Models
+Download the datasets from the initial iteration and each stage of PARC, as well as the models trained in the 3rd PARC iteration.
+These files are loaded with anim/motion_lib.py and anim/kin_char_model.py.
+You can view them with motion_forge.py, by editing the "motion_filepath" param in MOTION_FORGE/motion_forge_config.yaml
+https://1sfu-my.sharepoint.com/:f:/g/personal/mxa23_sfu_ca/Et16uLMFxoRKouibvBa7LbwBEmX5_iI5a8dZyiMc0wmSTA?e=ihma1b
+The password is "PARC".
+
 ## Codebase Guide
 The PARC training loop consists of 4 main stages, which are individually run by:
 ```
@@ -60,11 +67,6 @@ You can also load the default terrain with it's default motion, and go to step 6
 You can also generate motions based on the current motion frame and target direction using the "G" key.
 
 Edit the terrain using the "A" key, and check out what you can do with the Terrain GUI.
-
-## Dataset and Models
-Download the datasets from the initial iteration and each stage of PARC, as well as the models trained in the 3rd PARC iteration.
-https://1sfu-my.sharepoint.com/:f:/g/personal/mxa23_sfu_ca/Et16uLMFxoRKouibvBa7LbwBEmX5_iI5a8dZyiMc0wmSTA?e=ihma1b
-The password is "PARC".
 
 ## TODO
 - train and release more iterations of PARC generator and tracker
