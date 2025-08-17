@@ -477,7 +477,7 @@ class MDM(MotionGenerator):
 
         return ml_component_dict
     
-    def compute_stats(self, sampler: MotionSampler):
+    def compute_stats(self, sampler: MotionSampler, stats_filepath=None):
         # get every motion feature vector from all motions
         # then compute mean and std
         print("Computing motion stats...")
@@ -485,7 +485,9 @@ class MDM(MotionGenerator):
 
         stats_dir_name = os.path.dirname(self._cfg["sampler_save_filepath"])
         stats_file_name = os.path.splitext(os.path.basename(self._cfg["sampler_save_filepath"]))[0]
-        stats_filepath = os.path.join(stats_dir_name, stats_file_name + "_stats.txt")
+        if stats_filepath is None:
+            stats_filepath = os.path.join(stats_dir_name, stats_file_name + "_stats.txt")
+        
         if os.path.exists(stats_filepath):
             with open(stats_filepath, "r") as f:
                 mdm_feature_stats = yaml.safe_load(f)
@@ -1233,7 +1235,7 @@ class MDM(MotionGenerator):
         x = self.assemble_mdm_features(motion_features)
         return x
     
-    def train(self, motion_sampler, checkpoint_dir = None, test_only=False):
+    def train(self, motion_sampler, checkpoint_dir = None, test_only=False, stats_filepath=None):
         max_t = self._diffusion_timesteps
 
         # TODO: move these somewhere cleaner
@@ -1250,7 +1252,7 @@ class MDM(MotionGenerator):
         else:
             assert False
 
-        self.compute_stats(motion_sampler)
+        self.compute_stats(motion_sampler, stats_filepath=stats_filepath)
 
         def log_losses(losses, loss, epoch, start_time, num_samples, log_to_wandb):
             self._logger.log("epoch", epoch)
