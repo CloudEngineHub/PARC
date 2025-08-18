@@ -1,6 +1,15 @@
 # PARC
 
-Project pages: https://michaelx.io/PARC
+Project page: https://michaelx.io/parc
+
+```bibtex
+@inproceedings{xu2025parc,
+    author = {Xu, Michael and Shi, Yi and Yin, KangKang and Peng, Xue Bin},
+    title = {PARC: Physics-based Augmentation with Reinforcement Learning for Character Controllers},
+    year = {2025},
+    booktitle={SIGGRAPH 2025 Conference Papers (SIGGRAPH '25 Conference Papers)}
+}
+```
 
 # Getting Started
 Tested with Ubuntu 22.04
@@ -67,6 +76,21 @@ You can also load the default terrain with it's default motion, and go to step 6
 You can also generate motions based on the current motion frame and target direction using the "G" key.
 
 Edit the terrain using the "A" key, and check out what you can do with the Terrain GUI.
+
+Motion forge is built on top of a wonderful tool called Polyscope: https://polyscope.run/py/
+
+If you use Motion Forge in your research, please consider citing:
+```bibtex
+@software{Xu_Michael_Motion_Forge,
+  author = {Xu, Michael},
+  title = {{Motion Forge}},
+  year = {2025},
+  month = aug,
+  version = {0.0.1},
+  url = {https://github.com/mshoe/PARC},
+  license = {MIT}
+}
+```
 
 ## TODO
 - train and release more iterations of PARC generator and tracker
