@@ -42,6 +42,12 @@ parc_0_setup_iter.py
 * [PARC Guide](doc/parc_guide.md)  (Coming Soon)
 * [Motionscope Guide](doc/motionscope_guide.md)  (Coming Soon)
 
+## Planned Features
+* Iteration 4 and 5 models, datasets
+* Motion file format refactoring
+* Faster inference code
+* Full codebase cleanup and refactoring
+
 ## Citation
 If you find PARC helpful, please consider citing:
 ```bibtex
@@ -53,7 +59,7 @@ If you find PARC helpful, please consider citing:
 }
 ```
 
-Please also consider citing MimicKit, the codebase that PARC was built on:
+Please also consider citing [MimicKit](https://github.com/xbpeng/MimicKit), the codebase that PARC was built on:
 ```bibtex
 @misc{MimicKit,
 	title = {MimicKit},
