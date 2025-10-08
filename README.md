@@ -2,15 +2,6 @@
 
 Project page: https://michaelx.io/parc
 
-```bibtex
-@inproceedings{xu2025parc,
-    author = {Xu, Michael and Shi, Yi and Yin, KangKang and Peng, Xue Bin},
-    title = {PARC: Physics-based Augmentation with Reinforcement Learning for Character Controllers},
-    year = {2025},
-    booktitle={SIGGRAPH 2025 Conference Papers (SIGGRAPH '25 Conference Papers)}
-}
-```
-
 # Getting Started
 Tested with Ubuntu 22.04
 
@@ -31,10 +22,9 @@ pip install torch==1.13.1+cu117 -f https://download.pytorch.org/whl/torch_stable
 ## Dataset and Models
 Download the datasets from the initial iteration and each stage of PARC, as well as the models trained in the 3rd PARC iteration.
 These files are loaded with anim/motion_lib.py and anim/kin_char_model.py.
-You can view them with motion_forge.py, by editing the "motion_filepath" param in MOTION_FORGE/motion_forge_config.yaml
+You can view them with motion_forge.py, by editing the "motion_filepath" param in motionscope/motion_forge_config.yaml
 https://1sfu-my.sharepoint.com/:f:/g/personal/mxa23_sfu_ca/Et16uLMFxoRKouibvBa7LbwBEmX5_iI5a8dZyiMc0wmSTA?e=ihma1b
 The password is "PARC".
-The initial motion capture data was captured at Beyond Capture Studios, and funded by the NSERC Discovery Grant RGPIN-2024-06752.
 
 ## Codebase Guide
 The PARC training loop consists of 4 main stages, which are individually run by:
@@ -49,42 +39,37 @@ These modules are independent and flexibly configured using configuration files.
 ```
 parc_0_setup_iter.py
 ```
+* [PARC Guide](doc/parc_guide.md)  (Coming Soon)
+* [Motionscope Guide](doc/motionscope_guide.md)  (Coming Soon)
 
-To create a dataset file, we provide the script:
-```
-parc_5_create_dataset.py
-```
-This file also computes sampling weights, which is useful when there is much more motion data for certain types of clips than others (e.g. lots of running motions, few climbing motions). It also pre-computes some terrain data that will help with augmentation when training the motion diffusion model.
-
-## MOTION_FORGE
-The mouse cursor controls target direction and editing of terrain.
-
-Hotkeys:
-A: Change terrain height
-N: Place waypoint
-G: Generate motion
-
-Quick way to test motion generator and tracker:
-1. Load terrain with motion_forge.py (config file is in MOTION_FORGE/motion_forge_config.yaml).
-2. Place two waypoints using N
-3. Create path using GUIs -> Path Planning GUI -> A*
-4. Generate motion frames using GUIs -> Path Planning GUI -> Generate Frames from start until end of path (May need to adjust max motion length in "MDM gen along path config", default is 10 seconds)
-5. Select and view generated motions in GUIs -> Motion GUI -> Loaded Motions
-6. Test tracker with GUIs -> Isaac Gym GUI -> Start Isaac Gym, then "Transfer Current Motion to Isaac Gym GUI" (This requires you to hard code the terrain and model paths in MOTION_FORGE/include/isaac_gym_gui.py)
-
-You can also load the default terrain with it's default motion, and go to step 6 right away.
-
-You can also generate motions based on the current motion frame and target direction using the "G" key.
-
-Edit the terrain using the "A" key, and check out what you can do with the Terrain GUI.
-
-Motion forge is built on top of a wonderful tool called Polyscope: https://polyscope.run/py/
-
-If you use Motion Forge in your research, please consider citing:
+## Citation
+If you find PARC helpful, please consider citing:
 ```bibtex
-@software{Xu_Michael_Motion_Forge,
+@inproceedings{xu2025parc,
+    author = {Xu, Michael and Shi, Yi and Yin, KangKang and Peng, Xue Bin},
+    title = {PARC: Physics-based Augmentation with Reinforcement Learning for Character Controllers},
+    year = {2025},
+    booktitle={SIGGRAPH 2025 Conference Papers (SIGGRAPH '25 Conference Papers)}
+}
+```
+
+Please also consider citing MimicKit, the codebase that PARC was built on:
+```bibtex
+@misc{MimicKit,
+	title = {MimicKit},
+	author = {Peng, Xue Bin},
+	year = {2025},
+	publisher = {GitHub},
+	journal = {GitHub repository},
+	howpublished = {\url{https://github.com/xbpeng/MimicKit}},
+}
+```
+
+If you find Motionscope (previous name: Motion Forge, update coming soon) helpful, please consider citing:
+```bibtex
+@software{Xu_Michael_Motionscope,
   author = {Xu, Michael and Peng, Xue Bin},
-  title = {{Motion Forge}},
+  title = {{motionscope}},
   year = {2025},
   month = aug,
   version = {0.0.1},
@@ -93,10 +78,51 @@ If you use Motion Forge in your research, please consider citing:
 }
 ```
 
-## TODO
-- train and release more iterations of PARC generator and tracker
-- better isaac gym terrain integration, so edited terrain can be simulated immediately instead of reloading from config files
-- MOTION FORGE will get a complete overhaul to be more user-friendly
+Motionscope is built on top of a wonderful tool called [Polyscope](https://polyscope.run/py/). Please consider citing Polyscope here:
+```bibtext
+@misc{polyscope,
+  title = {Polyscope},
+  author = {Nicholas Sharp and others},
+  note = {www.polyscope.run},
+  year = {2019}
+}
+```
 
-## Example of Issac Gym Integration in Motion Forge
-![demo](doc/ig_gui-2025-08-12_09.54.32.gif)
+Also, consider citing these important papers which PARC's motion tracker and motion generator builds upon:
+
+DeepMimic
+```bibtex
+@article{
+	2018-TOG-deepMimic,
+	author = {Peng, Xue Bin and Abbeel, Pieter and Levine, Sergey and van de Panne, Michiel},
+	title = {DeepMimic: Example-guided Deep Reinforcement Learning of Physics-based Character Skills},
+	journal = {ACM Trans. Graph.},
+	issue_date = {August 2018},
+	volume = {37},
+	number = {4},
+	month = jul,
+	year = {2018},
+	issn = {0730-0301},
+	pages = {143:1--143:14},
+	articleno = {143},
+	numpages = {14},
+	url = {http://doi.acm.org/10.1145/3197517.3201311},
+	doi = {10.1145/3197517.3201311},
+	acmid = {3201311},
+	publisher = {ACM},
+	address = {New York, NY, USA},
+	keywords = {motion control, physics-based character animation, reinforcement learning},
+} 
+```
+
+Motion Diffusion Model
+```bibtex
+@inproceedings{
+tevet2023human,
+title={Human Motion Diffusion Model},
+author={Guy Tevet and Sigal Raab and Brian Gordon and Yoni Shafir and Daniel Cohen-or and Amit Haim Bermano},
+booktitle={The Eleventh International Conference on Learning Representations },
+year={2023},
+url={https://openreview.net/forum?id=SJ1kSyO2jwu}
+}
+```
