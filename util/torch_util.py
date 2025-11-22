@@ -75,7 +75,9 @@ def quat_to_axis_angle(q):
     length = torch.norm(q[..., 0:3], dim=-1, p=2)
     
     angle = 2.0 * torch.atan2(length, q[..., qw])
-    axis = q[..., qx:qw] / length.unsqueeze(-1)
+    # axis = q[..., qx:qw] / length.unsqueeze(-1)
+    safe_length = length.unsqueeze(-1).clamp(min=1e-6)
+    axis = q[..., qx:qw] / safe_length
 
     default_axis = torch.zeros_like(axis)
     default_axis[..., -1] = 1
