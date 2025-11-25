@@ -126,7 +126,11 @@ for i in range(kin_gen_num_batches_of_motions):
 
 print("********** CREATING PARC 3 TRACKER CONFIGS **********")
 tracker_config = yaml.safe_load(input_tracker_config_path.open('r'))
-tracker_config["in_model_file"] = str(input_tracker_model_path)
+if input_tracker_model_path is not None:
+    tracker_config["in_model_file"] = str(input_tracker_model_path)
+else:
+    tracker_config["in_model_file"] = None
+
 tracker_config["output_dir"] = str(output_tracker_dir)
 
 tracker_dataset_path = output_tracker_dir / "motions.yaml"
