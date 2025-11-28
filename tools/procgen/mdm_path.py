@@ -275,6 +275,7 @@ def generate_frames_until_end_of_path(path_nodes: torch.Tensor,
     final_frame[:] = -1
 
     final_frame_found = torch.zeros(size=[batch_size], dtype=torch.bool, device=mdm_device)
+    mdm_gen_settings.use_prev_state = True
     while True:
         if verbose:
             print("Generating at time: ", total_num_frames * dt)
