@@ -1,0 +1,20 @@
+save_path: "$DATA_DIR/tests/parc/april272025/iter_2/testt.yaml"
+folder_paths:
+- "$DATA_DIR/tests/parc/april272025/iter_2/p4_phys_record/recorded_motions/"
+- "$DATA_DIR/tests/parc/april272025/iter_1/p4_phys_record/recorded_motions/"
+- "$DATA_DIR/Data/parkour_dataset_april/initial/"
+char_filepath: "data/assets/humanoid.xml"
+compute_preprocessing_data: true
+cut_some_classes_in_half: false
+motion_classes_to_cut_in_half:
+- "running"
+- "platform"
+- "vaulting"
+- "climbing"
+- "mid_climbing"
+- "stairs"
+- "jumping"
+max_terrain_dim_x: 1001
+max_terrain_dim_y: 1001
+override_old_hf_mask_inds: False
+min_num_frames: 15
