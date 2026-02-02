@@ -34,7 +34,8 @@ New small model (~30 mb).
 These files are loaded with anim/motion_lib.py and anim/kin_char_model.py.
 You can view them with motion_forge.py, by editing the "motion_filepath" param in motionscope/motion_forge_config.yaml
 
-If you only want the data without installing the whole repo
+If you only want the data without installing the whole repo, check out the script: scripts/read_motion_data.py
+You should only need numpy (and maybe pytorch?) to read the data.
 
 
 (Old release:
