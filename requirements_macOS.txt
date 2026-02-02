@@ -1,11 +1,11 @@
 gym[accept-rom-license]==0.26.2
 matplotlib
-numpy
+numpy==1.24.4
 pyyaml
 torch==2.2.0
 wandb>=0.17.4
-embreex
 trimesh
+rtree
 polyscope
 send2trash
 py-cpuinfo

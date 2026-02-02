@@ -1,0 +1,41 @@
+output_dir: "$DATA_DIR/tests/parc/dec082025/"
+
+write_train_gen: true
+write_kin_gen: true
+write_tracker: true
+write_phys_record: true
+
+##### PARC 1 - TRAIN GEN #####
+input_mdm_config_path: "data/configs/parc_1_train_gen_default.yaml"
+input_mdm_model_path: null # put path to model here after iteration 1
+input_sampler_stats_path: null # put path to sampler stats file here (used for normalizing samples) after iter 1
+
+input_create_dataset_config_path: "data/configs/create_dataset_config.yaml"
+iter_start_dataset_path: "$DATA_DIR/tests/parc/dec082025/motions.yaml"
+input_dataset_folder_paths: ["$DATA_DIR/releases_parc/dec_release/initial_aug/",
+                             "$DATA_DIR/releases_parc/dec_release/rerun_april272025_iter_1_boxes/",
+                             "$DATA_DIR/releases_parc/dec_release/rerun_april272025_iter_2_boxes/",
+                             "$DATA_DIR/releases_parc/dec_release/rerun_april272025_iter_3_siggraph_terrain/",
+                             "$DATA_DIR/releases_parc/dec_release/rerun_april272025_iter_4_siggraph_terrain/",
+                             "$DATA_DIR/releases_parc/dec_release/rerun_april272025_iter_5_siggraph_terrain/",
+                             "$DATA_DIR/releases_parc/dec_release/dec2024_iter_1_boxes/",
+                             "$DATA_DIR/releases_parc/dec_release/dec2024_iter_2_boxes/",
+                             "$DATA_DIR/releases_parc/dec_release/dec2024_iter_3_siggraph_terrain/",
+                             "$DATA_DIR/releases_parc/dec_release/dec2024_iter_4_siggraph_terrain/"]
+
+##### PARC 2 - KIN GEN #####
+input_kin_gen_config_path: "$DATA_DIR/tests/parc/april272025/iter_4/p2_kin_gen/teaser_2500_2549/kin_gen_config.yaml"
+kin_gen_num_batches_of_motions: 10 # number of parallel jobs to run
+kin_gen_num_motions_per_batch: 50
+kin_gen_motion_id_offset: 0 # numbering starts from this number
+kin_gen_save_name: "teaser"
+kin_gen_procgen_mode: "BOXES" # "BOXES" or "FILE"
+kin_gen_start_heading_mode: "random" # "auto" or "random"
+
+##### PARC 3 - TRACKER #####
+input_tracker_config_path: "data/configs/parc_3_tracker_default.yaml"
+input_tracker_model_path: null # put path to tracker here after iteration 1
+
+##### PARC 4 - PHYS RECORD #####
+input_phys_record_config_path: "data/configs/parc_4_phys_record_default.yaml"
+

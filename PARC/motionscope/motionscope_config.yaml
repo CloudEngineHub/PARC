@@ -1,0 +1,12 @@
+load_mdm: False
+use_contact_info: True
+use_legacy_file_format: False
+
+motions:
+  - ["data/motion_terrains/sfu.pkl", "humanoid"]
+terrain_mesh_mode: "simple" # [simple, greedy]
+load_other_motion_terrains: False
+input_folder_dir: "data/terrains/"
+
+mdm_filepaths:
+  main: "$DATA_DIR/tests/parc/jan022025/p1_train_gen/checkpoints/model_40000.ckpt"
