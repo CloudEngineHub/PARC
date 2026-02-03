@@ -22,6 +22,14 @@ You can then run scripts such as:
 python scripts/run_motionscope.py
 ```
 
+## Motionscope
+Motionscope is my motion/terrain editor, as well as motion generator visualizer, built on top of Polyscope: https://polyscope.run/py/. You can run it by running:
+```
+python scripts/run_motionscope.py
+```
+
+Before that, you must edit the config file `parc/motionscope/motionscope_config.yaml` to load the motion you want, as well as optionally load an MDM model.
+
 ## Dataset and Models
 Download the datasets from the initial iteration and each stage of PARC.
 
