@@ -40,7 +40,7 @@ New small model (~30 mb).
 
 
 These files are loaded with anim/motion_lib.py and anim/kin_char_model.py.
-You can view them with motion_forge.py, by editing the "motion_filepath" param in motionscope/motion_forge_config.yaml
+You can view them with scripts/run_motionscope.py, by editing the "motion_filepath" param in parc/motionscope/motionscope_config.yaml
 
 If you only want the data without installing the whole repo, check out the script: scripts/read_motion_data.py
 You should only need numpy (and maybe pytorch?) to read the data.
@@ -48,7 +48,7 @@ You should only need numpy (and maybe pytorch?) to read the data.
 
 (Old release:
 https://1sfu-my.sharepoint.com/:f:/g/personal/mxa23_sfu_ca/Et16uLMFxoRKouibvBa7LbwBEmX5_iI5a8dZyiMc0wmSTA?e=ihma1b
-The password is "PARC".)
+The password is "PARC". The file format is only compatible with v0.1 PARC release.)
 
 ## User configuration
 All configuration files reference data, checkpoints, and generated outputs through a `$DATA_DIR` placeholder. Set this base
